@@ -2,6 +2,9 @@ import streamlit as st
 import pandas as pd
 from sqlalchemy import create_engine
 import plotly.express as px # IMPORTA GRAFICOS
+import os
+
+port = int(os.environ.get("PORT", 8501))
 
 
 engine = create_engine(
@@ -27,4 +30,5 @@ st.subheader('ANÁLISE MENSAL E ANUAL DE COMPRAS, CONTAS E SALÁRIOS')
 month = st.sidebar.selectbox(
     'SELECIONE O ANO',
     sorted(df[df['Ano'] != 2022]['Ano'].unique()) # estou excluindo o ano de 2022
+
 )
